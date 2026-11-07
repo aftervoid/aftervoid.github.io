@@ -15,7 +15,7 @@ The-Par3a is a personal website and creative project by **Parsa**. This reposito
 | `index-en.html` | English homepage |
 | `naaktab.html` | Persian Royesh story |
 | `royesh-en.html` | English Royesh story |
-| `fonts/` | Locally hosted font files and their inventory |
+| `fonts/` | Locally hosted font files and inventory |
 | `licenses/` | Complete third-party font license texts |
 | `LICENSE` | Apache License 2.0 for eligible original software code |
 | `CONTENT-LICENSE.md` | CC BY 4.0 terms for eligible original written content |
@@ -24,23 +24,22 @@ The-Par3a is a personal website and creative project by **Parsa**. This reposito
 
 ## Typography
 
-The English homepage uses a documented, layered font-delivery and fallback strategy. See [Font delivery and fallback strategy](FONT-DELIVERY.md) for the role of each family, provider order, CDN caveats, and instructions for reusing the source.
-
-
-The repository bundles several font files, while the English homepage also provides external fallback routes for its five typefaces. The live diagnostics panel on that page can report face-load results on the visitor's device. See [the font delivery guide](FONT-DELIVERY.md) for details.
+The English homepage uses **DM Sans** for readable body text and controls, **Space Grotesk** for headings, **Inter** as a secondary fallback, and **Pixelify Sans / Press Start 2P** only for decorative accents. All five families are bundled locally; external mirrors remain available as fallback routes. See [English typography and font delivery](FONT-DELIVERY.md) for provider order, CDN caveats, and the on-page diagnostics panel.
 
 | Typeface | Where it is used |
 |---|---|
+| **DM Sans** | English homepage body text and controls |
+| **Space Grotesk** | English homepage headings |
+| **Inter** | English homepage fallback and English story interface |
+| **Pixelify Sans** | Small decorative English UI accents |
+| **Press Start 2P** | Occasional retro display accents |
 | **Rooyin** | Persian homepage interface and reading text |
-| **Pixelify Sans** | English homepage interface and body text |
-| **Press Start 2P** | English homepage headings |
-| **Inter** | English story interface and supporting typography |
-| **Lora** | English story reading text |
-| **Cormorant Garamond** | English story display headings |
+| **Lora** | English Royesh story prose |
+| **Cormorant Garamond** | English Royesh story display headings |
 | **Cascadia Code** | Code samples and phonetic/IPA text |
-| **Vazirmatn** | Retained local font asset and fallback use |
+| **Vazirmatn** | Retained Persian font asset and fallback use |
 
-See [`fonts/README.md`](fonts/README.md) for the file-by-file inventory and [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) for upstream attribution.
+See [`fonts/README.md`](fonts/README.md) for the file inventory and [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) for upstream attribution.
 
 ## License overview
 
@@ -65,11 +64,11 @@ When a file combines code and written content, each component keeps the license 
 
 The [Update font licenses workflow](.github/workflows/update-font-licenses.yml) runs every Monday at 08:23 UTC and can also be started manually from the **Actions** tab. It currently checks and synchronizes the upstream license texts for **Cormorant Garamond, Inter, Lora, Cascadia Code, and Vazirmatn**.
 
-The workflow updates license text files only. It does not download or replace font binaries, and it does not automatically synchronize the license files for **Rooyin, Pixelify Sans, or Press Start 2P**. Review those projects' upstream notices manually when changing their font versions. A failed workflow should be investigated from its Actions log rather than worked around by replacing a license file without verification.
+The workflow updates license text files only. It does not download or replace font binaries, and it does not automatically synchronize every bundled font license. Review DM Sans, Space Grotesk, Rooyin, Pixelify Sans, and Press Start 2P notices manually when changing their versions.
 
 ## Useful documentation
 
 - [Font inventory](fonts/README.md)
+- [English font delivery guide](FONT-DELIVERY.md)
 - [Font license index](licenses/README.md)
 - [Third-party notices and attributions](THIRD-PARTY-NOTICES.md)
-- [Content license scope](CONTENT-LICENSE.md)
