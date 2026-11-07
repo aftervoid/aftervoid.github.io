@@ -68,16 +68,26 @@
     }
 
 
-    /* DM Sans is not bundled in fonts/ yet; start with the upstream original. */
+    /* Locally hosted variable families are the primary English typography source. */
     @font-face {
       font-family: "DM Sans Hosted";
-      src: url("https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype");
-      font-style: normal; font-weight: 400 900; font-display: swap;
+      src: url("./fonts/DMSans[opsz,wght].ttf") format("truetype"),
+           url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
+           url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
+           url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype");
+      font-style: normal; font-weight: 100 1000; font-display: swap;
     }
     @font-face {
       font-family: "Space Grotesk Hosted";
-      src: url("https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf") format("truetype");
-      font-style: normal; font-weight: 400 700; font-display: swap;
+      src: url("./fonts/SpaceGrotesk[wght].ttf") format("truetype"),
+           url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
+           url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
+           url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf") format("truetype");
+      font-style: normal; font-weight: 300 700; font-display: swap;
     }
 
     /* Priority 4-5: upstream Google Fonts repository, then this site's Raw mirror. */
@@ -153,7 +163,7 @@
         radial-gradient(ellipse at 52% 45%, rgba(99, 102, 241, .055), transparent 42rem),
         var(--bg);
       color: var(--text);
-      font-family: "Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", "DM Sans Hosted", "DM Sans", "DM Sans Variable", "DM Sans Repo", "DM Sans Installed", "Segoe UI", Arial, sans-serif;
+      font-family: "DM Sans Hosted", "DM Sans Repo", "DM Sans", "DM Sans Variable", "DM Sans Installed", "Inter Hosted", "Inter Repo", "Inter", "Inter Variable", "Inter Installed", "Segoe UI", Arial, sans-serif;
       line-height: 1.9;
       -webkit-font-smoothing: antialiased;
       isolation: isolate;
@@ -232,7 +242,7 @@
       background: linear-gradient(125deg, rgba(31,25,49,.97), rgba(14,23,35,.97));
       color: var(--text);
       box-shadow: 0 9px 30px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.08);
-      font: 700 .82rem/1.5 "Pixelify Hosted", "Pixelify Sans", "Pixelify Sans Variable", "Pixelify Repo", "Pixelify Installed", "Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", "Segoe UI", Arial, sans-serif;
+      font: 700 .82rem/1.5 "DM Sans Hosted", "DM Sans Repo", "DM Sans", "DM Sans Variable", "DM Sans Installed", "Inter Hosted", "Inter Repo", "Inter", "Inter Variable", "Inter Installed", "Segoe UI", Arial, sans-serif;
       text-align: right;
       cursor: pointer;
       transition: border-color .2s, transform .2s, box-shadow .2s;
@@ -295,7 +305,7 @@
     .studio-control-block select { width:100%;padding:11px;border:1px solid #343b4c;border-radius:10px;background:#171d2b;color:var(--text);font:inherit;font-size:.85rem; }
     .studio-control-block input { width:100%;accent-color:var(--accent);cursor:pointer; }
     .studio-actions { display:flex;gap:10px;margin-top:18px; }
-    .studio-actions button { min-height:48px;padding:10px 16px;border-radius:12px;font:700 .87rem "Pixelify Hosted", "Pixelify Sans", "Pixelify Sans Variable", "Pixelify Repo", "Pixelify Installed", "Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", "Segoe UI", Arial, sans-serif;cursor:pointer; }
+    .studio-actions button { min-height:48px;padding:10px 16px;border-radius:12px;font:700 .87rem "DM Sans Hosted", "DM Sans Repo", "DM Sans", "DM Sans Variable", "DM Sans Installed", "Inter Hosted", "Inter Repo", "Inter", "Inter Variable", "Inter Installed", "Segoe UI", Arial, sans-serif;cursor:pointer; }
     .studio-play { flex:1;border:1px solid var(--accent);background:var(--accent);color:#14200d; }
     .studio-next { border:1px solid #51416e;background:#211b32;color:#e9ddff; }
     .studio-next:disabled { opacity:.4;cursor:not-allowed; }
@@ -327,7 +337,7 @@
     .language-toggle:hover { border-color:var(--accent); background:rgba(167,243,107,.12); }
     .language-code { color:var(--accent); letter-spacing:.04em; }
     .language-caption { color:var(--muted); font-weight:500; }
-    body { font-family:"Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", "DM Sans Hosted", "DM Sans", "DM Sans Variable", "DM Sans Repo", "DM Sans Installed", "Segoe UI", Arial, sans-serif; }
+    body { font-family:"DM Sans Hosted", "DM Sans Repo", "DM Sans", "DM Sans Variable", "DM Sans Installed", "Inter Hosted", "Inter Repo", "Inter", "Inter Variable", "Inter Installed", "Segoe UI", Arial, sans-serif; }
     .music-toggle { text-align:left; }
     .footer-links a:hover { transform:translateX(3px); }
     .nav-links a { color: var(--muted); font-size: .91rem; text-decoration: none; transition: color .2s; }
@@ -545,11 +555,11 @@
     }
 
     /* اصلاح چیدمان دکمه‌ها و خوانایی تایپوگرافی */
-    button, input, select { font-family: "Pixelify Hosted", "Pixelify Sans", "Pixelify Sans Variable", "Pixelify Repo", "Pixelify Installed", "Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", "Segoe UI", Arial, sans-serif; }
+    button, input, select { font-family: "DM Sans Hosted", "DM Sans Repo", "DM Sans", "DM Sans Variable", "DM Sans Installed", "Inter Hosted", "Inter Repo", "Inter", "Inter Variable", "Inter Installed", "Segoe UI", Arial, sans-serif; }
     button { touch-action: manipulation; }
     body { font-size: 16px; text-rendering: optimizeLegibility; }
     p { line-height: 2; }
-    h1, h2, h3 { font-family: "Press Start 2P Hosted", "Press Start 2P", "Press Start 2P Repo", "Press Start 2P Installed", "Pixelify Hosted", "Pixelify Sans", "Pixelify Sans Variable", "Pixelify Repo", "Pixelify Installed", sans-serif; font-weight: 400; text-wrap: pretty; }
+    h1, h2, h3 { font-family: "Space Grotesk Hosted", "Space Grotesk Repo", "Space Grotesk", "Space Grotesk Variable", "Space Grotesk Installed", "DM Sans Hosted", "DM Sans", "DM Sans Variable", "Inter Hosted", "Inter", sans-serif; font-weight: 400; text-wrap: pretty; }
     h1 { font-size: clamp(1.15rem, 3.4vw, 2.15rem); line-height: 1.8; letter-spacing: 0; }
     h2 { font-size: clamp(.85rem, 2.1vw, 1.25rem); line-height: 2; letter-spacing: 0; }
     h3 { font-size: clamp(.68rem, 1.35vw, .9rem); line-height: 1.9; letter-spacing: 0; }
@@ -774,7 +784,7 @@
 
   
     /* Typography refinement: English */
-    html[dir="ltr"] body { font-family: "Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", "DM Sans Hosted", "DM Sans", "DM Sans Variable", "DM Sans Repo", "DM Sans Installed", "Segoe UI", Arial, sans-serif; font-size: 16.5px; line-height: 1.82; }
+    html[dir="ltr"] body { font-family: "DM Sans Hosted", "DM Sans Repo", "DM Sans", "DM Sans Variable", "DM Sans Installed", "Inter Hosted", "Inter Repo", "Inter", "Inter Variable", "Inter Installed", "Segoe UI", Arial, sans-serif; font-size: 16.5px; line-height: 1.82; }
     html[dir="ltr"] h1,
     html[dir="ltr"] h2,
     html[dir="ltr"] h3 { font-family: "Pixelify Hosted", "Pixelify Sans", "Pixelify Sans Variable", "Pixelify Repo", "Pixelify Installed", "DM Sans Hosted", "DM Sans", "DM Sans Variable", "DM Sans Repo", "DM Sans Installed", "Inter Hosted", "Inter", "Inter Variable", "Inter Repo", "Inter Installed", sans-serif; letter-spacing: 0; line-height: 1.35; }
@@ -1014,8 +1024,8 @@
       <p class="font-monitor-intro">Run a local check to see which declared typefaces the browser can load, which ones fail, and the font-file routes visible to this page. Results are generated on this device and are not sent to a server.</p>
       <div class="font-monitor-content">
         <div class="font-monitor-actions"><button class="font-monitor-button" id="font-monitor-run" type="button">Run font check</button><span class="font-monitor-summary" id="font-monitor-summary" aria-live="polite">No diagnostic run yet.</span></div>
-        <div class="font-monitor-list" id="font-monitor-list" aria-live="polite"><p class="font-monitor-detail">Open this panel and run the check to inspect Inter, DM Sans, Space Grotesk, Pixelify Sans, and Press Start 2P.</p></div>
-        <p class="font-monitor-note">A successful font-face load confirms that the browser loaded the face. The browser may hide the precise response status for cross-origin or cached files, so the panel distinguishes a confirmed URL from an observed request and never invents a failed CDN or a fallback source.</p>
+        <div class="font-monitor-list" id="font-monitor-list" aria-live="polite"><p class="font-monitor-detail">Open this panel and run the check to inspect DM Sans, Inter, Space Grotesk, Pixelify Sans, and Press Start 2P.</p></div>
+        <p class="font-monitor-note">A successful font-face load confirms that the browser loaded the face. DM Sans is the primary reading face; Space Grotesk is reserved for headings; Inter is a secondary UI fallback; Pixelify Sans and Press Start 2P are decorative accents only. The browser may hide the precise response status for cross-origin or cached files, so the panel distinguishes a confirmed URL from an observed request and never invents a failed CDN or a fallback source.</p>
       </div>
     </details>
     <div class="wrap footer-bottom">
