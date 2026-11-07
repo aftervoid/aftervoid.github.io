@@ -39,6 +39,8 @@
     @font-face {
       font-family: "Pixelify Hosted";
       src: url("./fonts/PixelifySans[wght].ttf") format("truetype"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/PixelifySans%5Bwght%5D.ttf") format("truetype"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/PixelifySans%5Bwght%5D.ttf") format("truetype"),
            url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/PixelifySans%5Bwght%5D.ttf") format("truetype"),
            url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/PixelifySans%5Bwght%5D.ttf") format("truetype"),
            url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/PixelifySans%5Bwght%5D.ttf") format("truetype");
@@ -47,6 +49,8 @@
     @font-face {
       font-family: "Press Start 2P Hosted";
       src: url("./fonts/PressStart2P-Regular.ttf") format("truetype"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/PressStart2P-Regular.ttf") format("truetype"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/pressstart2p/PressStart2P-Regular.ttf") format("truetype"),
            url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/PressStart2P-Regular.ttf") format("truetype"),
            url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/PressStart2P-Regular.ttf") format("truetype"),
            url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/PressStart2P-Regular.ttf") format("truetype");
@@ -55,6 +59,8 @@
     @font-face {
       font-family: "Inter Hosted";
       src: url("./fonts/InterVariable.woff2") format("woff2"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/InterVariable.woff2") format("woff2"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf") format("truetype"),
            url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/InterVariable.woff2") format("woff2"),
            url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/InterVariable.woff2") format("woff2"),
            url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/InterVariable.woff2") format("woff2");
@@ -65,6 +71,8 @@
     @font-face {
       font-family: "DM Sans Hosted";
       src: url("./fonts/DMSans[opsz,wght].ttf") format("truetype"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
            url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
            url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
            url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype");
@@ -73,6 +81,8 @@
     @font-face {
       font-family: "Space Grotesk Hosted";
       src: url("./fonts/SpaceGrotesk[wght].ttf") format("truetype"),
+           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
+           url("https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
            url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
            url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
            url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype");
@@ -793,6 +803,25 @@
       html[dir="ltr"] .intro { font-size: 1.02rem; }
     }
 
+    .font-monitor { margin: 28px auto 10px; width: min(var(--max), calc(100% - 40px)); border: 1px solid rgba(139,199,255,.2); border-radius: 20px; background: linear-gradient(135deg,rgba(18,22,32,.92),rgba(16,20,31,.78)); overflow: hidden; }
+    .font-monitor summary { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:17px 20px; cursor:pointer; color:var(--text); font-weight:700; list-style:none; }
+    .font-monitor summary::-webkit-details-marker { display:none; }
+    .font-monitor summary::after { content:'＋'; color:var(--accent); font-size:1.2rem; }
+    .font-monitor[open] summary::after { content:'−'; }
+    .font-monitor-intro { padding:0 20px 14px; margin:0; color:var(--muted); font-size:.88rem; }
+    .font-monitor-content { padding:0 20px 20px; }
+    .font-monitor-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:14px; }
+    .font-monitor-button { border:1px solid rgba(167,243,107,.5); border-radius:11px; padding:9px 14px; background:rgba(167,243,107,.1); color:var(--text); font:inherit; font-weight:700; cursor:pointer; }
+    .font-monitor-button:disabled { opacity:.55; cursor:wait; }
+    .font-monitor-summary { color:var(--muted); font-size:.8rem; }
+    .font-monitor-list { display:grid; gap:10px; }
+    .font-monitor-row { padding:13px 14px; border:1px solid rgba(148,163,184,.16); border-radius:13px; background:rgba(255,255,255,.025); }
+    .font-monitor-row-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:7px; }
+    .font-monitor-row strong { font-size:.92rem; }
+    .font-monitor-state { color:var(--accent); font-size:.76rem; font-weight:700; }
+    .font-monitor-state.is-error { color:#ff9a9a; }
+    .font-monitor-detail { margin:5px 0 0; color:var(--muted); font-size:.78rem; overflow-wrap:anywhere; }
+    .font-monitor-note { margin:13px 0 0; color:#8390a3; font-size:.74rem; line-height:1.7; }
   </style>
 </head>
 <body>
@@ -989,6 +1018,15 @@
         <p class="license-footnote">The generated <code>upptime/</code> dashboard is separately licensed under MIT. This summary is informational, not legal advice.</p>
       </section>
     </div>
+    <details class="font-monitor" id="font-monitor">
+      <summary><span>Typography diagnostics · Live font status</span></summary>
+      <p class="font-monitor-intro">Run a local check to see which declared typefaces the browser can load, which ones fail, and the font-file routes visible to this page. Results are generated on this device and are not sent to a server.</p>
+      <div class="font-monitor-content">
+        <div class="font-monitor-actions"><button class="font-monitor-button" id="font-monitor-run" type="button">Run font check</button><span class="font-monitor-summary" id="font-monitor-summary" aria-live="polite">No diagnostic run yet.</span></div>
+        <div class="font-monitor-list" id="font-monitor-list" aria-live="polite"><p class="font-monitor-detail">Open this panel and run the check to inspect Inter, DM Sans, Space Grotesk, Pixelify Sans, and Press Start 2P.</p></div>
+        <p class="font-monitor-note">A successful font-face load confirms that the browser loaded the face. The browser may hide the precise response status for cross-origin or cached files, so the panel distinguishes a confirmed URL from an observed request and never invents a failed CDN or a fallback source.</p>
+      </div>
+    </details>
     <div class="wrap footer-bottom">
       <p class="footer-credit"><span  >Built with curiosity, learning, and a little code. · © 2026 Parsa</span></p>
       <p><span  >Rights and licenses are described for each relevant part.</span></p>
@@ -1125,6 +1163,57 @@ if ("serviceWorker" in navigator) {
     });
   }, { once: true });
 }
+</script>
+<script>
+// On-device font diagnostics: uses the CSS Font Loading API and Resource Timing.
+(() => {
+  const button = document.getElementById('font-monitor-run');
+  const list = document.getElementById('font-monitor-list');
+  const summary = document.getElementById('font-monitor-summary');
+  if (!button || !list || !summary || !document.fonts) return;
+  const faces = [
+    { name: 'Inter', family: 'Inter Hosted', match: /InterVariable|Inter%5Bopsz%2Cwght%5D/i },
+    { name: 'DM Sans', family: 'DM Sans Hosted', match: /DMSans|dm-sans/i },
+    { name: 'Space Grotesk', family: 'Space Grotesk Hosted', match: /SpaceGrotesk|space-grotesk/i },
+    { name: 'Pixelify Sans', family: 'Pixelify Hosted', match: /PixelifySans|pixelify-sans/i },
+    { name: 'Press Start 2P', family: 'Press Start 2P Hosted', match: /PressStart2P|press-start-2p/i }
+  ];
+  const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  function routeFor(face) {
+    const entries = performance.getEntriesByType('resource').filter(entry => face.match.test(entry.name));
+    const successful = entries.filter(entry => Number(entry.responseStatus) >= 200 && Number(entry.responseStatus) < 400);
+    const chosen = successful[successful.length - 1] || entries[entries.length - 1];
+    if (!chosen) return { detail: 'No matching network request is exposed; the face may be cached, local, or served by a stylesheet with an opaque URL.', state: 'route not exposed' };
+    const host = (() => { try { return new URL(chosen.name).hostname; } catch (_) { return 'local resource'; } })();
+    if (successful.includes(chosen)) return { detail: 'Confirmed resource response from ' + host + ' · ' + chosen.name, state: 'source confirmed' };
+    if (Number(chosen.responseStatus) === 0) return { detail: 'Request observed at ' + host + ', but the browser did not expose an HTTP status · ' + chosen.name, state: 'request observed' };
+    return { detail: 'Last matching request: ' + chosen.name + (chosen.responseStatus ? ' · HTTP ' + chosen.responseStatus : ''), state: 'request observed' };
+  }
+  function render(rows) {
+    list.innerHTML = rows.map(row => '<article class="font-monitor-row"><div class="font-monitor-row-head"><strong>' + escapeHTML(row.name) + '</strong><span class="font-monitor-state' + (row.failed ? ' is-error' : '') + '">' + escapeHTML(row.status) + '</span></div><p class="font-monitor-detail">' + escapeHTML(row.detail) + '</p></article>').join('');
+    const loaded = rows.filter(row => row.loaded).length;
+    const failed = rows.length - loaded;
+    summary.textContent = loaded + ' of ' + rows.length + ' faces loaded' + (failed ? ' · ' + failed + ' unavailable' : ' · no face errors detected');
+  }
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    summary.textContent = 'Checking declared font faces…';
+    list.innerHTML = '<p class="font-monitor-detail">The browser is checking the font files used by this page.</p>';
+    const rows = await Promise.all(faces.map(async face => {
+      try {
+        const loadedFaces = await document.fonts.load('16px "' + face.family + '"', 'AaBb0123456789');
+        const loaded = loadedFaces.length > 0 && loadedFaces.every(item => item.status === 'loaded') && document.fonts.check('16px "' + face.family + '"', 'AaBb0123456789');
+        const route = routeFor(face);
+        return { name: face.name, loaded, failed: !loaded, status: loaded ? 'Loaded' : 'Not available', detail: loaded ? route.detail : 'The declared face did not complete successfully. The CSS stack can continue to the next family or system fallback. ' + route.detail };
+      } catch (error) {
+        const route = routeFor(face);
+        return { name: face.name, loaded: false, failed: true, status: 'Load failed', detail: 'The browser could not load this face; the page will use the next available family. ' + route.detail };
+      }
+    }));
+    render(rows);
+    button.disabled = false;
+  });
+})();
 </script>
 </body>
 </html>
