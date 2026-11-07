@@ -14,7 +14,7 @@ The homepage uses a layered fallback strategy. It prefers files served by this r
 | **Pixelify Sans** | Pixel-styled controls and selected interface details | Variable, weights 400–700 | [Pixelify Sans](https://fontsource.org/fonts/pixelify-sans) · `@fontsource-variable/pixelify-sans` |
 | **Press Start 2P** | Decorative pixel headings | Static, weight 400 | [Press Start 2P](https://fontsource.org/fonts/press-start-2p) · `@fontsource/press-start-2p` |
 
-The exact visual role is controlled by the CSS font stacks in `index-en.html`; the table describes the intended design role, not a promise that every visitor will receive every face.
+The exact visual role is controlled by the CSS font stacks in `index-en.html`; the table describes the intended design role, not a promise that every visitor will receive every face. The repository currently bundles the English-homepage files for **Inter**, **Pixelify Sans**, and **Press Start 2P**. **DM Sans** and **Space Grotesk** are not currently in `fonts/`, so their dedicated hosted aliases begin with the upstream Google Fonts raw files and then fall through to the stylesheet families and installed/system options.
 
 ## Source order
 
@@ -22,24 +22,25 @@ For each typeface, the intended preference is:
 
 1. **Repository-local file** — a relative `./fonts/...` URL served from the website's own origin. This is the preferred production source because it is under this project's deployment and cache control.
 2. **Repository CDN mirrors** — jsDelivr plus its Fastly and Gcore endpoints. These serve the same repository assets; they are mirrors, not three independent copies of the font.
-3. **Raw GitHub mirror (raw.githack)** — another delivery route for files in this repository. It still depends on the same GitHub-hosted source, so it is not an independent font origin.
-4. **Google Fonts stylesheet** — the page's primary hosted stylesheet. It selects the appropriate webfont files and subsets for the requested families.
-5. **Bunny Fonts stylesheet fallback** — added only if the Google Fonts stylesheet itself emits a loading error. It is a second stylesheet provider, not a fallback for every individual font-file failure.
-6. **Google Fonts upstream repository (Raw)** — direct upstream font files, where a matching face is defined in the CSS.
-7. **Fontsource stylesheet fallback** — versioned font packages delivered through Fontsource's jsDelivr-backed CDN. The current `@latest` stylesheet URLs intentionally follow the latest package release; pin an exact package version for reproducible deployments.
-8. **Locally installed visitor font** — used only if the visitor already has that family installed.
-9. **System generic fallback** — for example, `Segoe UI`, `Arial`, or `sans-serif`.
+3. **Raw GitHub mirror (raw.githack)** — another delivery route for bundled files in this repository. It still depends on the same GitHub-hosted source, so it is not an independent font origin.
+4. **Google Fonts upstream Raw files** — direct upstream files are the first hosted source for DM Sans and Space Grotesk because no copies of those two families are bundled in `fonts/`.
+5. **Google Fonts stylesheet** — the page's primary hosted stylesheet. It selects the appropriate webfont files and subsets for the requested families.
+6. **Bunny Fonts stylesheet fallback** — added only if the Google Fonts stylesheet itself emits a loading error. It is a second stylesheet provider, not a fallback for every individual font-file failure.
+7. **Google Fonts upstream repository (Raw)** — direct upstream font files, where a matching face is defined in the CSS.
+8. **Fontsource stylesheet fallback** — versioned font packages delivered through Fontsource's jsDelivr-backed CDN. The current `@latest` stylesheet URLs intentionally follow the latest package release; pin an exact package version for reproducible deployments.
+9. **Locally installed visitor font** — used only if the visitor already has that family installed.
+10. **System generic fallback** — for example, `Segoe UI`, `Arial`, or `sans-serif`.
 
 The CSS family stack is the final selection order. URLs inside one `src` list are alternative sources for the same face. Browsers may schedule network requests asynchronously; this should not be interpreted as a guarantee that every URL is contacted one-by-one in a strict timeline.
 
 
 ## Live diagnostics on the English homepage
 
-The English homepage includes a **Typography diagnostics** panel near the footer. A visitor can run the check on their own device; it uses the browser's CSS Font Loading API to request the five declared homepage faces and report whether each face loaded or failed. It then consults Resource Timing entries to show a matching font-file URL when the browser exposes one.
+The English homepage includes a **Typography diagnostics** panel near the footer. A visitor can run the check on their own device; it tries each font's primary Hosted face and then its declared family aliases (Google Fonts, Fontsource, Raw upstream, or installed copy) in order. It reports the first downloadable face that actually loads, or that the webfont chain failed and CSS must fall through to an installed/system font. It then consults Resource Timing entries to show matching successful or failed font-file requests when the browser exposes them.
 
 The panel is privacy-preserving: results remain in the page, are not uploaded, and are not used as analytics. It does not claim that every candidate URL was contacted. A successful face load proves that the browser obtained a usable face, while the exact successful URL may remain hidden for cached files or cross-origin resources without timing/status exposure. In that case the panel says that the route is not exposed or that only a request was observed. If a face fails, the CSS family stack continues to its next declared family and ultimately a system fallback.
 
-The diagnostic is an on-demand check, not a continuous background monitor. It tests the English homepage's declared Hosted font faces; it does not test every character glyph, every weight, every browser, or the Persian homepage.
+The diagnostic is an on-demand check, not a continuous background monitor. It tests one Latin sample for the English homepage's five font families; it does not test every character glyph, every weight, every browser, or the Persian homepage. The browser does not expose a reliable API for naming the exact operating-system font ultimately selected by a generic fallback.
 
 ## Fontsource URL conventions
 
