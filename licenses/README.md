@@ -7,15 +7,15 @@ This directory contains the complete license texts distributed with the third-pa
 | Font family | Copyright attribution in upstream notice | Reserved Font Name | Local license file |
 |---|---|---|---|
 | Cascadia Code | Microsoft Corporation, 2019–present | Cascadia Code | [`Cascadia-Code-LICENSE.txt`](Cascadia-Code-LICENSE.txt) |
-| Cormorant Garamond | The Cormorant Project Authors, 2015 | None stated in the included notice | [`Cormorant-Garamond-OFL.txt`](Cormorant-Garamond-OFL.txt) |
+| Cormorant Garamond | The Cormorant Project Authors, 2015 | None stated in the included notice | [`Cormorant-Garamond-OFL.txt`](Cormorant-Garamond-OFL.txt) |\n| DM Sans | The DM Sans Project Authors, 2014 | None stated in the included notice | [`DM-Sans-OFL.txt`](DM-Sans-OFL.txt) |
 | Inter | The Inter Project Authors, 2016 | None stated in the included notice | [`Inter-font-LICENSE.txt`](Inter-font-LICENSE.txt) |
 | Lora | The Lora Project Authors, 2011 | Lora | [`lora-font-license.txt`](lora-font-license.txt) |
 | Pixelify Sans | The Pixelify Sans Project Authors, 2021 | Check the included notice for the exact declaration | [`PixelifySans-OFL.txt`](PixelifySans-OFL.txt) |
 | Press Start 2P | The Press Start 2P Project Authors, 2012 | Press Start 2P | [`PressStart2P-OFL.txt`](PressStart2P-OFL.txt) |
-| Rooyin | The Rooyin-Perfect Project Authors, 2025 | Rooyin | [`Rooyin-OFL.txt`](Rooyin-OFL.txt) |
+| Rooyin | The Rooyin-Perfect Project Authors, 2025 | Rooyin | [`Rooyin-OFL.txt`](Rooyin-OFL.txt) |\n| Space Grotesk | The Space Grotesk Project Authors, 2020 | None stated in the included notice | [`Space-Grotesk-OFL.txt`](Space-Grotesk-OFL.txt) |
 | Vazirmatn | The Vazirmatn Project Authors, 2015 | None stated in the included notice | [`Vazirmatn-font-license.txt`](Vazirmatn-font-license.txt) |
 
-All eight families are identified in their included notices as using the **SIL Open Font License, Version 1.1 (OFL-1.1)**. The copyright and Reserved Font Name entries above are a quick index only. When redistributing or modifying a font, consult its complete local license file and the upstream project's current notice.
+All ten families are identified in their included notices as using the **SIL Open Font License, Version 1.1 (OFL-1.1)**. The copyright and Reserved Font Name entries above are a quick index only. When redistributing or modifying a font, consult its complete local license file and the upstream project's current notice.
 
 ## What the OFL means in practice
 
