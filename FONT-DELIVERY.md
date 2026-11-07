@@ -22,14 +22,24 @@ For each typeface, the intended preference is:
 
 1. **Repository-local file** — a relative `./fonts/...` URL served from the website's own origin. This is the preferred production source because it is under this project's deployment and cache control.
 2. **Repository CDN mirrors** — jsDelivr plus its Fastly and Gcore endpoints. These serve the same repository assets; they are mirrors, not three independent copies of the font.
-3. **Google Fonts stylesheet** — the page's primary hosted stylesheet. It selects the appropriate webfont files and subsets for the requested families.
-4. **Bunny Fonts stylesheet fallback** — added only if the Google Fonts stylesheet itself emits a loading error. It is a second stylesheet provider, not a fallback for every individual font-file failure.
-5. **Google Fonts upstream repository (Raw)** — direct upstream font files, where a matching face is defined in the CSS.
-6. **Fontsource stylesheet fallback** — versioned font packages delivered through Fontsource's jsDelivr-backed CDN. The current `@latest` stylesheet URLs intentionally follow the latest package release; pin an exact package version for reproducible deployments.
-7. **Locally installed visitor font** — used only if the visitor already has that family installed.
-8. **System generic fallback** — for example, `Segoe UI`, `Arial`, or `sans-serif`.
+3. **Raw GitHub mirror (raw.githack)** — another delivery route for files in this repository. It still depends on the same GitHub-hosted source, so it is not an independent font origin.
+4. **Google Fonts stylesheet** — the page's primary hosted stylesheet. It selects the appropriate webfont files and subsets for the requested families.
+5. **Bunny Fonts stylesheet fallback** — added only if the Google Fonts stylesheet itself emits a loading error. It is a second stylesheet provider, not a fallback for every individual font-file failure.
+6. **Google Fonts upstream repository (Raw)** — direct upstream font files, where a matching face is defined in the CSS.
+7. **Fontsource stylesheet fallback** — versioned font packages delivered through Fontsource's jsDelivr-backed CDN. The current `@latest` stylesheet URLs intentionally follow the latest package release; pin an exact package version for reproducible deployments.
+8. **Locally installed visitor font** — used only if the visitor already has that family installed.
+9. **System generic fallback** — for example, `Segoe UI`, `Arial`, or `sans-serif`.
 
 The CSS family stack is the final selection order. URLs inside one `src` list are alternative sources for the same face. Browsers may schedule network requests asynchronously; this should not be interpreted as a guarantee that every URL is contacted one-by-one in a strict timeline.
+
+
+## Live diagnostics on the English homepage
+
+The English homepage includes a **Typography diagnostics** panel near the footer. A visitor can run the check on their own device; it uses the browser's CSS Font Loading API to request the five declared homepage faces and report whether each face loaded or failed. It then consults Resource Timing entries to show a matching font-file URL when the browser exposes one.
+
+The panel is privacy-preserving: results remain in the page, are not uploaded, and are not used as analytics. It does not claim that every candidate URL was contacted. A successful face load proves that the browser obtained a usable face, while the exact successful URL may remain hidden for cached files or cross-origin resources without timing/status exposure. In that case the panel says that the route is not exposed or that only a request was observed. If a face fails, the CSS family stack continues to its next declared family and ultimately a system fallback.
+
+The diagnostic is an on-demand check, not a continuous background monitor. It tests the English homepage's declared Hosted font faces; it does not test every character glyph, every weight, every browser, or the Persian homepage.
 
 ## Fontsource URL conventions
 
@@ -48,7 +58,7 @@ Fontsource uses a jsDelivr-backed proxy. It adds a different package and stylesh
 - Avoid preloading every font. If performance testing justifies preloading, preload only the single critical face/subset used above the fold.
 - Do not add every provider as a separate `@font-face` without checking the actual CSS family name, weight range, style, subset, and file format.
 - A stylesheet `error` event detects failure to load that stylesheet; it does not reliably detect every failure of an individual font file referenced inside a stylesheet.
-- The three jsDelivr hostnames point to the same repository asset. They improve endpoint redundancy but do not provide independent source ownership.
+- The three jsDelivr hostnames and the raw.githack mirror point to files in the same repository. They add delivery routes, not independent font ownership or independent upstream copies.
 - The repository's `fonts/` directory is the intended self-hosted source. Keep it populated with the actual font binaries before describing local hosting as available.
 - Font files remain third-party assets under their own licenses. See [Third-party notices](THIRD-PARTY-NOTICES.md) and the complete license files in `licenses/`.
 
