@@ -1185,7 +1185,7 @@ if ("serviceWorker" in navigator) {
     if (entries.length) return { detail: 'No successful response was exposed. Observed attempts: ' + entries.map(describe).join('; ') + '. Cross-origin status may be hidden by the browser.', state: 'request observed' };
     return { detail: 'No matching request is exposed; the file may be cached, locally available, or delivered through a stylesheet with an opaque URL.', state: 'route not exposed' };
   }
-  function render(rows) {  function render(rows) {
+  function render(rows) {
     list.innerHTML = rows.map(row => '<article class="font-monitor-row"><div class="font-monitor-row-head"><strong>' + escapeHTML(row.name) + '</strong><span class="font-monitor-state' + (row.failed ? ' is-error' : '') + '">' + escapeHTML(row.status) + '</span></div><p class="font-monitor-detail">' + escapeHTML(row.detail) + '</p></article>').join('');
     const loaded = rows.filter(row => row.loaded).length;
     const failed = rows.length - loaded;
