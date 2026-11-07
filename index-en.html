@@ -68,24 +68,15 @@
     }
 
 
+    /* DM Sans is not bundled in fonts/ yet; start with the upstream original. */
     @font-face {
       font-family: "DM Sans Hosted";
-      src: url("./fonts/DMSans[opsz,wght].ttf") format("truetype"),
-           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
-           url("https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
-           url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
-           url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype"),
-           url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype");
+      src: url("https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf") format("truetype");
       font-style: normal; font-weight: 400 900; font-display: swap;
     }
     @font-face {
       font-family: "Space Grotesk Hosted";
-      src: url("./fonts/SpaceGrotesk[wght].ttf") format("truetype"),
-           url("https://raw.githack.com/aftervoid/aftervoid.github.io/main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
-           url("https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
-           url("https://cdn.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
-           url("https://fastly.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype"),
-           url("https://gcore.jsdelivr.net/gh/aftervoid/aftervoid.github.io@main/fonts/SpaceGrotesk%5Bwght%5D.ttf") format("truetype");
+      src: url("https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf") format("truetype");
       font-style: normal; font-weight: 400 700; font-display: swap;
     }
 
@@ -1172,24 +1163,29 @@ if ("serviceWorker" in navigator) {
   const summary = document.getElementById('font-monitor-summary');
   if (!button || !list || !summary || !document.fonts) return;
   const faces = [
-    { name: 'Inter', family: 'Inter Hosted', match: /InterVariable|Inter%5Bopsz%2Cwght%5D/i },
-    { name: 'DM Sans', family: 'DM Sans Hosted', match: /DMSans|dm-sans/i },
-    { name: 'Space Grotesk', family: 'Space Grotesk Hosted', match: /SpaceGrotesk|space-grotesk/i },
-    { name: 'Pixelify Sans', family: 'Pixelify Hosted', match: /PixelifySans|pixelify-sans/i },
-    { name: 'Press Start 2P', family: 'Press Start 2P Hosted', match: /PressStart2P|press-start-2p/i }
+    { name: 'Inter', family: 'Inter Hosted', fallbacks: ['Inter', 'Inter Variable', 'Inter Repo', 'Inter Installed'], match: /InterVariable|Inter%5Bopsz%2Cwght%5D/i },
+    { name: 'DM Sans', family: 'DM Sans Hosted', fallbacks: ['DM Sans', 'DM Sans Variable', 'DM Sans Repo', 'DM Sans Installed'], match: /DMSans|dm-sans/i },
+    { name: 'Space Grotesk', family: 'Space Grotesk Hosted', fallbacks: ['Space Grotesk', 'Space Grotesk Variable', 'Space Grotesk Repo', 'Space Grotesk Installed'], match: /SpaceGrotesk|space-grotesk/i },
+    { name: 'Pixelify Sans', family: 'Pixelify Hosted', fallbacks: ['Pixelify Sans', 'Pixelify Sans Variable', 'Pixelify Repo', 'Pixelify Installed'], match: /PixelifySans|pixelify-sans/i },
+    { name: 'Press Start 2P', family: 'Press Start 2P Hosted', fallbacks: ['Press Start 2P', 'Press Start 2P Repo', 'Press Start 2P Installed'], match: /PressStart2P|press-start-2p/i }
   ];
   const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   function routeFor(face) {
     const entries = performance.getEntriesByType('resource').filter(entry => face.match.test(entry.name));
     const successful = entries.filter(entry => Number(entry.responseStatus) >= 200 && Number(entry.responseStatus) < 400);
-    const chosen = successful[successful.length - 1] || entries[entries.length - 1];
-    if (!chosen) return { detail: 'No matching network request is exposed; the face may be cached, local, or served by a stylesheet with an opaque URL.', state: 'route not exposed' };
-    const host = (() => { try { return new URL(chosen.name).hostname; } catch (_) { return 'local resource'; } })();
-    if (successful.includes(chosen)) return { detail: 'Confirmed resource response from ' + host + ' · ' + chosen.name, state: 'source confirmed' };
-    if (Number(chosen.responseStatus) === 0) return { detail: 'Request observed at ' + host + ', but the browser did not expose an HTTP status · ' + chosen.name, state: 'request observed' };
-    return { detail: 'Last matching request: ' + chosen.name + (chosen.responseStatus ? ' · HTTP ' + chosen.responseStatus : ''), state: 'request observed' };
+    const failed = entries.filter(entry => Number(entry.responseStatus) >= 400);
+    const chosen = successful[successful.length - 1];
+    const describe = entry => {
+      let host = 'local resource';
+      try { host = new URL(entry.name).hostname; } catch (_) {}
+      const code = Number(entry.responseStatus);
+      return host + (code >= 200 && code < 400 ? ' · HTTP ' + code : code >= 400 ? ' · HTTP ' + code + ' (failed)' : ' · status hidden');
+    };
+    if (chosen) return { detail: 'Loaded resource: ' + describe(chosen) + ' · ' + chosen.name + (failed.length ? ' | Failed attempts also observed: ' + failed.map(describe).join('; ') : ''), state: 'source confirmed' };
+    if (entries.length) return { detail: 'No successful response was exposed. Observed attempts: ' + entries.map(describe).join('; ') + '. Cross-origin status may be hidden by the browser.', state: 'request observed' };
+    return { detail: 'No matching request is exposed; the file may be cached, locally available, or delivered through a stylesheet with an opaque URL.', state: 'route not exposed' };
   }
-  function render(rows) {
+  function render(rows) {  function render(rows) {
     list.innerHTML = rows.map(row => '<article class="font-monitor-row"><div class="font-monitor-row-head"><strong>' + escapeHTML(row.name) + '</strong><span class="font-monitor-state' + (row.failed ? ' is-error' : '') + '">' + escapeHTML(row.status) + '</span></div><p class="font-monitor-detail">' + escapeHTML(row.detail) + '</p></article>').join('');
     const loaded = rows.filter(row => row.loaded).length;
     const failed = rows.length - loaded;
@@ -1200,17 +1196,21 @@ if ("serviceWorker" in navigator) {
     summary.textContent = 'Checking declared font faces…';
     list.innerHTML = '<p class="font-monitor-detail">The browser is checking the font files used by this page.</p>';
     const rows = await Promise.all(faces.map(async face => {
-      try {
-        const loadedFaces = await document.fonts.load('16px "' + face.family + '"', 'AaBb0123456789');
-        const loaded = loadedFaces.length > 0 && loadedFaces.every(item => item.status === 'loaded') && document.fonts.check('16px "' + face.family + '"', 'AaBb0123456789');
-        const route = routeFor(face);
-        return { name: face.name, loaded, failed: !loaded, status: loaded ? 'Loaded' : 'Not available', detail: loaded ? route.detail : 'The declared face did not complete successfully. The CSS stack can continue to the next family or system fallback. ' + route.detail };
-      } catch (error) {
-        const route = routeFor(face);
-        return { name: face.name, loaded: false, failed: true, status: 'Load failed', detail: 'The browser could not load this face; the page will use the next available family. ' + route.detail };
+      const candidates = [face.family, ...(face.fallbacks || [])];
+      for (const family of candidates) {
+        try {
+          const loadedFaces = await document.fonts.load('16px "' + family + '"', 'AaBb0123456789');
+          if (loadedFaces.length && loadedFaces.every(item => item.status === 'loaded')) {
+            const route = routeFor(face);
+            return { name: face.name, loaded: true, failed: false, status: family === face.family ? 'Primary face loaded' : 'Fallback face loaded: ' + family, detail: route.detail };
+          }
+        } catch (_) {
+          // Keep testing the next declared family; the browser may still have a usable fallback.
+        }
       }
+      return { name: face.name, loaded: false, failed: true, status: 'Webfont faces unavailable', detail: 'No declared downloadable face in this family chain completed. The CSS stack falls through to an installed font or a system generic such as Segoe UI, Arial, or sans-serif. Exact OS font resolution is not exposed to page JavaScript.' };
     }));
-    render(rows);
+    render(rows);    render(rows);
     button.disabled = false;
   });
 })();
