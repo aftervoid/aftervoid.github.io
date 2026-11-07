@@ -1208,7 +1208,8 @@ if ("serviceWorker" in navigator) {
           // Keep testing the next declared family; the browser may still have a usable fallback.
         }
       }
-      return { name: face.name, loaded: false, failed: true, status: 'Webfont faces unavailable', detail: 'No declared downloadable face in this family chain completed. The CSS stack falls through to an installed font or a system generic such as Segoe UI, Arial, or sans-serif. Exact OS font resolution is not exposed to page JavaScript.' };
+      const route = routeFor(face);
+      return { name: face.name, loaded: false, failed: true, status: 'Webfont faces unavailable', detail: 'No declared downloadable face in this family chain completed. ' + route.detail + ' The CSS stack falls through to an installed font or a system generic such as Segoe UI, Arial, or sans-serif. Exact OS font resolution is not exposed to page JavaScript.' };
     }));
     render(rows);
     button.disabled = false;
