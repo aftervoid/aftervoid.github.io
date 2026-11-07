@@ -1,6 +1,6 @@
 # Website fonts
 
-This directory contains the font files used by the website. Fonts are hosted in this repository and loaded from the site's own origin; the pages do not need a third-party font CDN at runtime.
+This directory contains the font files used by the website. Bundled files can be served from the site's own origin, but the English homepage also declares external fallback routes for several typefaces. See [the font delivery guide](../FONT-DELIVERY.md) for the exact order and its limitations.
 
 ## Font inventory
 
