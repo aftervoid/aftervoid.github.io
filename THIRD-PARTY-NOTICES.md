@@ -1,8 +1,8 @@
 # Third-party notices
 
-This file records the third-party fonts and other separately licensed material included in this repository. It identifies the upstream projects, local license files, and the boundaries between third-party assets and original project material.
+This file records third-party fonts and other separately licensed material included in this repository. It identifies upstream projects, local license files, and the boundaries between third-party assets and original project material.
 
-**Important:** A license applying to one part of this repository does not automatically apply to every other part. In particular, the Apache and Creative Commons notices for original project material do not replace the licenses of third-party fonts or generated dashboard files.
+**Important:** A license applying to one part of this repository does not automatically apply to every other part. Apache and Creative Commons notices for original project material do not replace the licenses of third-party fonts or generated dashboard files.
 
 ## License boundaries
 
@@ -16,15 +16,11 @@ This file records the third-party fonts and other separately licensed material i
 
 These descriptions apply only where the relevant copyright holder has the rights to grant the stated license. Third-party material is not relicensed by this repository.
 
-## Web font delivery on the English homepage
+## English homepage font delivery
 
-The English homepage references the following font families through its CSS stacks: Inter, DM Sans, Space Grotesk, Pixelify Sans, and Press Start 2P. The page can request these families from Google Fonts, use Bunny Fonts as a stylesheet-level fallback if the Google Fonts stylesheet fails, and use Fontsource CSS as an additional family fallback. Fontsource's CDN is backed by jsDelivr; it is a separate package route, not an independent CDN network.
+The English homepage self-hosts DM Sans, Space Grotesk, Inter, Pixelify Sans, and Press Start 2P. DM Sans is the primary reading and UI family; Space Grotesk is used for headings; Inter is a secondary fallback; Pixelify Sans and Press Start 2P are decorative accents. External routes include jsDelivr mirrors, raw.githack, official Google Fonts raw files, Google Fonts CSS, Bunny Fonts stylesheet fallback, and Fontsource CSS. Fontsource is jsDelivr-backed; the jsDelivr hostnames are alternate endpoints of the same service, not independent CDN networks.
 
-The delivery order and implementation details are documented in [FONT-DELIVERY.md](FONT-DELIVERY.md). CDN delivery does not change font ownership or licensing. Each font remains governed by its own upstream license and the corresponding notice in this file. The actual locally bundled files are inventoried in [fonts/README.md](fonts/README.md).
-
-## Generated status dashboard
-
-The generated site under `upptime/` comes from the separate [aftervoid/upptime project](https://github.com/aftervoid/upptime), which is based on [Upptime](https://upptime.js.org/). Its generated output is not covered by the root Apache or CC BY notices. The upstream MIT license and its required notice are preserved in [`upptime/LICENSE`](upptime/LICENSE).
+The full order, implementation notes, and limits of the live diagnostics panel are described in [FONT-DELIVERY.md](FONT-DELIVERY.md). CDN delivery does not change font ownership or licensing. Each font remains governed by its own upstream license and the corresponding notice in this file.
 
 ## Bundled font inventory
 
@@ -34,18 +30,20 @@ The font files below are stored in this repository and served from the website's
 |---|---|---|
 | **Cascadia Code** | Code samples and phonetic/IPA text | `fonts/CascadiaCode.woff2` |
 | **Cormorant Garamond** | English Royesh story display headings | `fonts/CormorantGaramond-Light.woff2`, `Regular`, `Medium`, `SemiBold`, `Bold`, `Italic` |
-| **Inter** | English Royesh story interface | `fonts/InterVariable.woff2` |
+| **DM Sans** | English homepage body text and controls | `fonts/DMSans[opsz,wght].ttf` |
+| **Inter** | English homepage fallback and English Royesh story interface | `fonts/InterVariable.woff2` |
 | **Lora** | English Royesh story prose | `fonts/Lora[wght].woff2` |
-| **Pixelify Sans** | English homepage interface and body text | `fonts/PixelifySans[wght].ttf` |
-| **Press Start 2P** | English homepage headings | `fonts/PressStart2P-Regular.ttf` |
+| **Pixelify Sans** | Small decorative English UI accents | `fonts/PixelifySans[wght].ttf` |
+| **Press Start 2P** | Occasional retro display accents | `fonts/PressStart2P-Regular.ttf` |
 | **Rooyin** | Persian homepage interface and reading text | `fonts/rooyin/RooyinFree-Regular.woff2`, `fonts/rooyin/RooyinFree-Bold.woff2` |
+| **Space Grotesk** | English homepage headings | `fonts/SpaceGrotesk[wght].ttf` |
 | **Vazirmatn** | Retained Persian font asset and fallback use | `fonts/Vazirmatn.woff2` |
 
-All eight font families are accompanied by local license texts in [`licenses/`](licenses/). Each family is identified by its upstream notice as licensed under the **SIL Open Font License, Version 1.1 (OFL-1.1)**.
+All listed font families are accompanied by local license texts in [`licenses/`](licenses/). Their upstream notices identify them as licensed under the **SIL Open Font License, Version 1.1 (OFL-1.1)**.
 
 ## Font attribution
 
-The following details summarize the upstream notices. The complete local license text is the authoritative copy included with each font.
+The following details summarize upstream notices. The complete local license text is the authoritative copy included with each font.
 
 ### Cascadia Code
 - Copyright: © 2019–present Microsoft Corporation.
@@ -57,6 +55,11 @@ The following details summarize the upstream notices. The complete local license
 - Copyright: © 2015 The Cormorant Project Authors.
 - Upstream: https://github.com/CatharsisFonts/Cormorant
 - Local license: [`licenses/Cormorant-Garamond-OFL.txt`](licenses/Cormorant-Garamond-OFL.txt)
+
+### DM Sans
+- Copyright: © 2014 The DM Sans Project Authors.
+- Upstream: https://github.com/googlefonts/dm-fonts
+- Local license: [`licenses/DM-Sans-OFL.txt`](licenses/DM-Sans-OFL.txt)
 
 ### Inter
 - Copyright: © 2016 The Inter Project Authors.
@@ -86,6 +89,11 @@ The following details summarize the upstream notices. The complete local license
 - Upstream: https://github.com/MohamadDarvishi/Rooyin
 - Local license: [`licenses/Rooyin-OFL.txt`](licenses/Rooyin-OFL.txt)
 
+### Space Grotesk
+- Copyright: © 2020 The Space Grotesk Project Authors.
+- Upstream: https://github.com/floriankarsten/space-grotesk
+- Local license: [`licenses/Space-Grotesk-OFL.txt`](licenses/Space-Grotesk-OFL.txt)
+
 ### Vazirmatn
 - Copyright: © 2015 The Vazirmatn Project Authors.
 - Upstream: https://github.com/rastikerdar/vazirmatn
@@ -99,7 +107,7 @@ The OFL permits font software to be used, embedded, modified, and redistributed 
 - Do not sell the font software by itself.
 - Do not relicense the font software under different terms.
 - Respect any Reserved Font Name declared by the upstream notice when distributing a modified version.
-- Do not use the upstream authors' or copyright holders' names to promote a modified version without permission.
+- Do not use upstream authors' or copyright holders' names to promote a modified version without permission.
 
 A format conversion or other change can count as a Modified Version under the OFL. Check the [official OFL text](https://openfontlicense.org/) and [OFL FAQ](https://openfontlicense.org/ofl-faq/) before modifying or converting font files.
 
@@ -113,7 +121,7 @@ The [Update font licenses workflow](.github/workflows/update-font-licenses.yml) 
 - Cascadia Code
 - Vazirmatn
 
-It validates each download before updating the matching local license file. It does not download or modify font binaries, and it does not currently automate license checks for Rooyin, Pixelify Sans, or Press Start 2P. Attribution details and Reserved Font Name declarations also require human review when font versions change.
+It validates each download before updating the matching local license file. It does not download or modify font binaries, and it does not currently automate license checks for DM Sans, Space Grotesk, Rooyin, Pixelify Sans, or Press Start 2P. Attribution details and Reserved Font Name declarations also require human review when font versions change.
 
 ## Related documentation
 
