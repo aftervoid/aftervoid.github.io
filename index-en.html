@@ -1210,7 +1210,7 @@ if ("serviceWorker" in navigator) {
       }
       return { name: face.name, loaded: false, failed: true, status: 'Webfont faces unavailable', detail: 'No declared downloadable face in this family chain completed. The CSS stack falls through to an installed font or a system generic such as Segoe UI, Arial, or sans-serif. Exact OS font resolution is not exposed to page JavaScript.' };
     }));
-    render(rows);    render(rows);
+    render(rows);
     button.disabled = false;
   });
 })();
