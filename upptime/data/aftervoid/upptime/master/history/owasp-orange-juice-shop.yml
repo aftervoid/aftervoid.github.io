@@ -1,7 +1,7 @@
 url: https://juice-shop.herokuapp.com/
-status: up
+status: degraded
 code: 200
-responseTime: 287
-lastUpdated: 2026-11-13T15:17:12.965Z
+responseTime: 12456
+lastUpdated: 2026-11-13T21:54:54.169Z
 startTime: 2026-11-03T20:27:44.481Z
 generator: Upptime <https://github.com/upptime/upptime>
