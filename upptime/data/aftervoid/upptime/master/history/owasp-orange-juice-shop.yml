@@ -1,7 +1,7 @@
 url: https://juice-shop.herokuapp.com/
-status: degraded
-code: 503
-responseTime: 4248
-lastUpdated: 2026-11-14T21:20:06.557Z
+status: up
+code: 200
+responseTime: 289
+lastUpdated: 2026-11-15T02:23:56.286Z
 startTime: 2026-11-03T20:27:44.481Z
 generator: Upptime <https://github.com/upptime/upptime>
